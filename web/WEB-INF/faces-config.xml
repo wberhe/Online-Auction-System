@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee" 
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+      http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+              version="2.0" >
+
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+
+        <navigation-case>
+            <from-action>#{auctionBean.viewAuctionDetail(item)}</from-action>
+            <from-outcome>auction_detail</from-outcome>
+            <to-view-id>/jsfpages/auction_detail.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/auction_detail.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{buyerBean.checkLogin()}}</from-action>
+            <from-outcome>bid</from-outcome>
+            <to-view-id>/jsfpages/bid.xhmtl</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/jsfpages/error.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>home</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>create_auction</from-outcome>
+            <to-view-id>/jsfpages/createAuction.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>login_buyer</from-outcome>
+            <to-view-id>/jsfpages/loginBuyer.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>login_seller</from-outcome>
+            <to-view-id>/jsfpages/loginSeller.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>signup_buyer</from-outcome>
+            <to-view-id>/jsfpages/signUpBuyer.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>signup_seller</from-outcome>
+            <to-view-id>/jsfpages/signUpSeller.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>logInFail</from-outcome>
+            <to-view-id>/jsfpages/loginFailed.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>welcomeSelection</from-outcome>
+            <to-view-id>/select.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>logout</from-outcome>
+            <to-view-id>/jsfpages/logout.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>news</from-outcome>
+            <to-view-id>/jsfpages/news.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>buyer_profile</from-outcome>
+            <to-view-id>/jsfpages/myProfile.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>seller_profile</from-outcome>
+            <to-view-id>/jsfpages/myProfile.xhtml</to-view-id>
+        </navigation-case>
+
+    </navigation-rule>
+    <application>
+        <resource-bundle>
+            <base-name>cs545.onlineauctionsystem.messages.messages_1</base-name>
+            <var>msgs</var>
+        </resource-bundle>
+    </application>
+</faces-config>

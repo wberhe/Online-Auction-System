@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{msgs.title}</title>
+        <h:outputStylesheet library="css" name="styles.css"/>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/masterLayout.xhtml">
+            <ui:define name="content" >
+                <table>
+                    <tr>
+                        <td rowspan="4" >
+                            <h:graphicImage  width="200" height="200" value="#{auctionBean.auction.itemImage}" />
+
+                            <h:form>
+                                <div >
+                                    <h:commandButton value="Place Bid" action="#{buyerBean.checkLogin()}" style="color:orange;width: 200px; width: 100px; height: 30px" >
+                                        <f:param name="url" value="bid" />
+                                    </h:commandButton>
+                                </div>
+                            </h:form>
+                        </td>
+                        <td><h3>#{auctionBean.auction.name}</h3></td>
+                    </tr>
+                    <tr>
+                        <td >Reserved price: 
+                            <h:outputText value="$#{auctionBean.auction.reservedPrice} USD" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >
+                            <p>
+                                #{auctionBean.auction.description} 
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            #{msgs.enDate} #{auctionBean.auction.endDate}
+                        </td>
+                    </tr>
+                </table>
+
+                <h:dataTable value="#{auctionBean.bids}" var="item" width="80%" 
+                             rowClasses="oddRow, evenRow" headerClass="order-table-header">
+                    
+                    <h:column>
+                        <f:facet name="header">Bid Number</f:facet>
+                            #{item.id}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Buyer Name</f:facet>
+                            #{item.buyer.firstName} #{item.buyer.lastName}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Bid Amount</f:facet>
+                            #{item.amount}
+                    </h:column>
+
+                </h:dataTable>
+
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

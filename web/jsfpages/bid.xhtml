@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <head><title>IGNORED</title>
+        <h:outputStylesheet library="css" name="styles.css"/>
+    </head>  
+    <body>        
+        <ui:composition template="/templates/masterLayout.xhtml">
+
+            <ui:define name="content">
+                <div class="seller_registration">
+                    <h:form prependId="false">
+                        <h2> Enter the bid amount</h2>
+                        <h:panelGrid columns="2"> 
+                            #{msgs.bidAmount}
+                            <h:panelGroup>
+                                <h:inputText validatorMessage="Price should be greater than reserved price" id="bid_amount" required="true" value="#{bidBean.bid.amount}">
+                                    <f:validateDoubleRange minimum="#{auctionBean.auction.reservedPrice /0.1 }" />
+                                </h:inputText>
+                                <br/>
+                                <h:message for="bid_amount" styleClass="error" />
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:commandButton value="Submit" action="#{bidBean.addToBid(auctionBean.auction)}" />
+                                <h:commandButton value="Cancel" action="/index" immediate="true" />
+                            </h:panelGroup>
+                        </h:panelGrid>
+
+                    </h:form>
+                </div>	  
+            </ui:define>  
+        </ui:composition>
+    </body>
+</html>

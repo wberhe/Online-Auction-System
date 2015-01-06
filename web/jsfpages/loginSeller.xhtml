@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head><title>LoginSeller</title>
+        <h:outputStylesheet library="css" name="styles.css"/>
+    </h:head>
+    <body>
+        <ui:composition template="/templates/masterLayout.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <h:panelGrid columns="2">
+
+                        #{msgs.username} 
+                        <h:inputText id="unamein" value="#{sellerBean.seller.userName}" 
+                                     required="true" requiredMessage="#{msgs.errUsername}"/>
+                        <h:outputText></h:outputText>
+                        <h:message for="unamein" class="error"  style="color:red"/>
+
+
+                        #{msgs.password}
+                        <h:inputSecret id="passin" value="#{sellerBean.seller.userPassword}" 
+                                       required="true" requiredMessage="#{msgs.errUserpassword}"/>
+                        <h:outputText></h:outputText>
+                        <h:message for="passin" class="error"  style="color:red"/>
+
+                    </h:panelGrid>
+
+                    <h:commandButton id="submit"  value="Login as a seller" action="#{sellerBean.doLogin()}" />
+                    <h:commandButton id="cancel"  value="#{msgs.cancel}" immediate="true" />
+
+                    <h:messages style="color:red;margin:8px;" />
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

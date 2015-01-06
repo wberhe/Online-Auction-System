@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <head><title>IGNORED</title>
+        <h:outputStylesheet library="css" name="styles.css"/>
+    </head>
+    <body>
+        <ui:composition>
+            <h:form>
+                <div class="main_sidebar">
+                    <h:panelGrid columns="1"  >
+                        <h:panelGroup styleClass="menu" >
+                            <h:commandLink value="#{msgs.homePage}" action="#{auctionBean.findAuctionList()}" immediate="true" />
+                        </h:panelGroup>
+                        <!--  PUBLIC homepage -->
+
+                        <h:panelGroup styleClass="menu" >
+                            <h:commandLink value="#{msgs.news}" action="news" />
+                        </h:panelGroup>
+                        <!--  PUBLIC news -->
+
+                        <h:panelGroup styleClass="menu"  rendered="#{buyerBean.selected}" >
+                            <h:commandLink value="#{msgs.loginBuyer}" action="login_buyer" rendered="#{!buyerBean.isLoggedIn}">
+                                <f:param name="url" value="loginBuyer"/>
+                            </h:commandLink>
+                            <h:commandLink value="#{msgs.logout}" action="#{buyerBean.logout()}" rendered="#{buyerBean.isLoggedIn}">
+                                <f:param name="url" value="logout"/>
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <!--  Buyer login & logout-->
+
+                        <h:panelGroup styleClass="menu" rendered="#{!buyerBean.selected}" >
+                            <h:commandLink value="#{msgs.loginSeller}" action="login_seller" rendered="#{!sellerBean.isLoggedIn}" >
+                                <f:param name="url" value="login_seller"/>
+                            </h:commandLink>
+                            <h:commandLink value="#{msgs.logout}" action="#{sellerBean.logout()}" rendered="#{sellerBean.isLoggedIn}" >
+                                <f:param name="url" value="logout"/>
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <!--  Seller login & logout-->
+
+                        <h:panelGroup styleClass="menu" rendered="#{buyerBean.selected &amp;&amp; !buyerBean.isLoggedIn}" >
+                            <h:commandLink value="#{msgs.signup} Buyer" action="signup_buyer" >
+                                <f:param name="url" value="signup_buyer"/>
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <!--  sign UP buyer -->
+
+                        <h:panelGroup styleClass="menu" rendered="#{!buyerBean.selected  &amp;&amp; !sellerBean.isLoggedIn}" >
+                            <h:commandLink value="#{msgs.signup} Seller" action="signup_seller" />
+                        </h:panelGroup>
+                        <!--  sign UP seller -->
+
+                        <h:panelGroup styleClass="menu" rendered="#{!buyerBean.selected &amp;&amp; sellerBean.isLoggedIn}" >
+                            <h:commandLink value="#{msgs.create_auction}" immediate="true" action="create_auction" >
+                                <f:param name="url" value="createAuction"/>
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <!--  Seller create Auction -->
+
+                        <h:panelGroup styleClass="menu" rendered="#{buyerBean.selected &amp;&amp; buyerBean.isLoggedIn}" ><!-- if buyer selected -->
+                            <h:commandLink value="#{msgs.profile}" action="seller_profile" >
+                                <f:param name="url" value="myProfile"/>
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <!--  Seller Profile -->
+
+                        <h:panelGroup styleClass="menu" rendered="#{!buyerBean.selected &amp;&amp; sellerBean.isLoggedIn}" > <!-- if seller selected -->
+                            <h:commandLink value="#{msgs.profile}" action="buyer_profile" >
+                                <f:param name="url" value="myProfile"/>
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <!--  Buyer Profile -->
+
+                        <h:panelGroup styleClass="menu" >
+                            <h:commandLink value="Go to Selection" action="/select" >
+                                <f:param name="url" value="news"/>
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <!--   Selection (debug) -->
+                    </h:panelGrid>
+                </div>
+            </h:form>
+        </ui:composition>
+    </body>
+</html>

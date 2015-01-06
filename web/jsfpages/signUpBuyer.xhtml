@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head><title>SignUpBuyer</title>
+       <h:outputStylesheet library="css" name="styles.css"/>
+    </h:head>
+    <body>
+        <ui:composition template="/templates/masterLayout.xhtml">
+
+            <ui:define name="content">
+                <h:form >
+                    <h3>Welcome!</h3>
+                    <h:panelGrid columns="2">
+                        
+                        #{msgs.first_name}
+                        <h:inputText id="fnamein" value="#{buyerBean.buyer.firstName}" label="Name"
+                                     required="true" requiredMessage="First name is required"/>
+                        <h:outputText></h:outputText>
+                        <h:message for="fnamein" styleClass="error"  style="color:red"/>
+                        
+                        #{msgs.last_name}
+                        <h:inputText id="lnamein" value="#{buyerBean.buyer.lastName}" label="Last name"
+                                     required="true" requiredMessage="Last name is required"/>
+                        <h:outputText></h:outputText>
+                        <h:message for="lnamein" styleClass="error"  style="color:red"/>
+                        
+                        #{msgs.username} 
+                        <h:inputText id="unamein" value="#{buyerBean.buyer.userName}" label="Username"
+                                     required="true" requiredMessage="user name is required"/>
+                        <h:outputText></h:outputText>
+                        <h:message for="unamein" styleClass="error"  style="color:red"/>
+                        
+                        #{msgs.email} 
+                        <h:inputText id="emailin" value="#{buyerBean.buyer.email}" label="Email"
+                                     required="true"   requiredMessage="Check email please"/>
+<!--                        <f:validateRegex
+		         pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />		                     -->
+                        
+                        <h:message for="emailin" styleClass="error"  style="color:red"  />
+                        
+                        
+                       #{msgs.password}
+                        <h:inputSecret id="passin" value="#{buyerBean.buyer.userPassword}" label="Password"
+                                       required="true" requiredMessage="Password is required"/>
+                        <h:outputText></h:outputText>
+                        <h:message for="passin" styleClass="error"  style="color:red"/>
+                        
+                        #{msgs.phone_number}
+                        <h:inputText id="phonein" value="#{buyerBean.buyer.phone}" label="Phone Number"
+                                     required="true" requiredMessage="Pone is required">
+<!--                             <f:validateDoubleRange minimum="8" maximum="12"/>-->
+                        </h:inputText>
+                        <h:outputText></h:outputText>
+                        <h:message for="phonein" styleClass="error"  style="color:red"/>
+                        
+                        
+                        #{msgs.address} 
+                        <h:inputText id="addressin" value="#{buyerBean.buyer.address}" label="Address"
+                                       required="true" requiredMessage="Address is required"/>
+                        <h:outputText></h:outputText>
+                        <h:message for="addressin" styleClass="error"  style="color:red"/>
+                    </h:panelGrid>
+                    
+                    <h:commandButton id="submit"  value="Register" action="#{buyerBean.addBuyer()}" />
+                    <h:commandButton id="cancel"  value="#{msgs.cancel}" immediate="true" />
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

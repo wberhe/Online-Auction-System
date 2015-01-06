@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <head><title>signupSellers</title>
+     <h:outputStylesheet library="css" name="styles.css"/>
+    </head>  
+    <body>        
+        <ui:composition template="/templates/masterLayout.xhtml">
+            <ui:define name="content">
+                <div class="seller_registration">
+                    <h:form prependId="false">
+                        <h3> Welcome to the Online Auction System</h3>
+                        <h:panelGrid columns="2">                                                 
+                            #{msgs.first_name}
+                            <h:panelGroup>
+                                <h:inputText id="login_fname" required="true" size="40" requiredMessage="#{msgs.fnameerr}" value="#{sellerBean.seller.firstName}"/>
+                                
+                                <br/><h:message for="login_fname" styleClass="error" />
+                            </h:panelGroup>
+
+                            #{msgs.last_name}
+                            <h:panelGroup>
+                                <h:inputText id="login_lname" required="true" size="40" requiredMessage="#{msgs.lnameerr}" value="#{sellerBean.seller.lastName}"/>
+                                
+                                <br/><h:message for="login_lname" styleClass="error" />
+                            </h:panelGroup>
+
+                            #{msgs.email}
+                            <h:panelGroup>
+                                <h:inputText id="login_email" required="true" size="40" requiredMessage="#{msgs.emailerr}" value="#{sellerBean.seller.email}" >
+                                    <f:validator validatorId="cs545.onlineauctionsystem.customrule.CustomValidator" />
+                                </h:inputText>
+                                <br/>
+                                <h:message for="login_email" styleClass="error"  />
+                            </h:panelGroup>
+                            
+                             #{msgs.phone_number}
+                            <h:panelGroup>
+                                <h:inputText id="login_phone" required="true" size="40" requiredMessage="#{msgs.phoneerr}" value="#{sellerBean.seller.phone}"/>
+                                
+                                <br/><h:message for="login_phone" styleClass="error" />
+                            </h:panelGroup>
+
+                            #{msgs.username}
+                            <h:panelGroup>
+                                <h:inputText id="login_username" required="true" size="40" requiredMessage="#{msgs.usererr}" value="#{sellerBean.seller.userName}"/>
+                                
+                                <br/><h:message for="login_username" styleClass="error"  />
+                            </h:panelGroup>
+
+                            #{msgs.password}
+                            <h:panelGroup>
+                                <h:inputSecret id="login_upass" required="true" size="40" requiredMessage="#{msgs.passerr}" value="#{sellerBean.seller.userPassword}"/>
+                                
+                                <br/><h:message for="login_upass" styleClass="error" />
+                            </h:panelGroup>
+
+                            #{msgs.address}
+                            <h:panelGroup>
+                                <h:inputText id="login_address" required="true" size="40" requiredMessage="#{msgs.addresserr}" value="#{sellerBean.seller.address}"/>
+                               
+                                <br/> <h:message for="login_address" styleClass="error" />
+                            </h:panelGroup>
+                        </h:panelGrid>
+                        <h:commandButton value="Submit" action="#{sellerBean.addSeller()}"/>
+                        <h:commandButton value="Cancel" immediate="true"/>
+                    </h:form>
+                </div>	  
+            </ui:define>  
+        </ui:composition>
+    </body>
+</html>

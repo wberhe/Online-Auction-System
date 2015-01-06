@@ -1,0 +1,220 @@
+#main_heading  {
+    position: relative;
+}
+
+._selection  {
+    position: absolute;
+    bottom: 5px;
+    right: 150px;
+}
+
+._selection img {
+    width: 180px;
+    height: 75px;
+    margin-left: 5px;
+}
+
+.featuredinner  {
+    border-bottom: #dadada dotted 1px;
+}
+
+.featuredinner td  {
+    vertical-align: top;
+}
+
+.title  {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.desc  {
+    font:12px arial;
+}
+
+.featuredinner img  {
+    width: 150px;
+    height: 130px;
+}
+
+.fearight {
+    width: 442px;
+    height: 100px;
+    float: right;
+    padding-top: 5px;
+}
+
+.fealeft {
+    width: 100px;
+    height: 80px;
+    float: left;
+    padding: 10px;
+}
+
+.featured {
+    width: 100%;
+    height: 31px;
+    background-color: #E5E5E5;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #1d2b31;
+    width: 100%;
+    height: 100%;
+}
+
+.menu  {
+    width: 100%;
+    height: 25px;
+    float: left;
+    list-style-type: none;
+    margin-top: 5px;
+}
+
+.menu:hover  {
+    background-color: gray;
+    color: black;
+}
+
+.menu a  {
+    font-family: Arial;
+    font-size: 15px;
+    color: #FFF;
+    text-decoration: none;
+    vertical-align: top;
+    width: 170px;
+    line-height: 25px;
+    padding-left: 15px;
+    float: left;
+    display: block;
+}
+
+#greeting_msg  {
+    position: absolute;
+    right: 20px;
+    top: 30px;
+}
+
+#main {
+    min-height: 600px;
+    height: 100%;
+    width: 1100px;
+    margin: 0 auto 0 auto;
+    background-color: #FFFFFF;
+}
+
+#content {
+    padding: 1px;
+    border: thin solid lightGray;
+    background: #fefeef;
+    right: 0px;
+    height: 100%;
+    width: 75%;
+    top: 130px;
+    float:left;
+}
+
+#heading {
+    padding: 10px;
+    height: 100px;
+    margin-bottom: 10px;
+    background: #FFF;
+}
+
+
+#sidebarLeft  {
+    
+    float:left;
+    
+    border: thin solid lightGray;
+    padding: 5px;
+    margin-right: 5px;
+    width: 23%;
+}
+
+
+#sidebarLeftIn {
+    width: 100%;
+    background: #AD5A00;
+    float:left;
+}
+
+#footer{
+    clear:both;
+    float: left;
+    padding: 5px;
+    width: 98%;
+    position: fixed;
+    bottom: 1px;
+    background: #dddddd;
+    text-align: center;
+}
+
+.header {
+    font-size: 1em;
+    font-style: italic;
+    font-family: Palatino;
+    text-align: center;
+}
+
+.footer {
+    font-size: 1em;
+    font-style: italic;
+    font-family: Palatino;
+    border:  thin solid lightGray;
+    text-align: center;
+}
+
+.planetImage {
+    padding: 5px;
+    text-align: center;
+}
+
+.planetImageSelected {
+    padding: 5px;
+    text-align: center;
+    background: #fefeef;
+    border: thin solid lightGray;
+}
+
+.welcome {
+    font-style: italic;
+    font-family: Palatino;
+}
+
+.welcomeImage {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.seller_registration{
+    margin-left: 20%;
+    margin-right: 20%;
+    width:55%
+}
+
+.error{
+    color: red;
+    font:12px italic;
+}
+
+.to_right  {
+    position: absolute;
+    right: 3px;
+}
+.order-table-header{
+    text-align:center;
+    background:none repeat scroll 0 0 #E5E5E5;
+    border-bottom:1px solid #BBBBBB;
+    padding:16px;
+}
+.oddRow{
+    text-align: center;
+}
+.evenRow{
+    text-align: center;
+}
+.oddRow{
+    background:lightBlue;
+}

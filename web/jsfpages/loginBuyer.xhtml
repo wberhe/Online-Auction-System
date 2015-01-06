@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <h:outputStylesheet library="css" name="styles.css"/>
+    </h:head>
+    <body>
+        <ui:composition template="/templates/masterLayout.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <h:panelGrid columns="2">
+                        #{msgs.username} 
+                        <h:panelGroup>
+                            <h:inputText id="unamein" value="#{buyerBean.buyer.userName}" label="Username"
+                                         required="true" requiredMessage="User name is required" />
+                            <h:message for="unamein" class="error"  style="color:red"/>
+                        </h:panelGroup>
+
+                        #{msgs.password}
+                        <h:panelGroup>
+                            <h:inputSecret id="passin" value="#{buyerBean.buyer.userPassword}" label="Password"
+                                           required="true" requiredMessage="Password is required"/>
+                            <h:message for="passin" class="error"  style="color:red"/>
+                        </h:panelGroup>
+                    </h:panelGrid>
+
+                    <h:commandButton id="submit"  value="Login" action="#{buyerBean.doLogin()}" />
+                    <h:commandButton id="cancel"  value="#{msgs.cancel}" immediate="true" />
+                    <h:commandButton id="signup"  value="#{msgs.signup}" action="signup_buyer" immediate="true"/>
+
+                    <h:messages style="color:red;margin:8px;" />
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

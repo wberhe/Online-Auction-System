@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <title><ui:insert name="#{msgs.title}"/></title>
+        <h:outputStylesheet library="css" name="styles.css"/>
+    </h:head>
+
+    <h:body>
+        <div id="main">
+            <div id="heading">
+                <ui:insert name="heading">
+                    <ui:include src="/sections/mainHeader/header.xhtml"/>
+                </ui:insert>
+                <!--          <ui:insert name="" />-->
+            </div>
+
+            <div id="sidebarLeft">
+                <div id="sidebarLeftIn">
+                    <ui:insert name="sidebarLeft">
+                        <ui:include src="/sections/sidebar/sidebarLeft.xhtml"/>            
+                    </ui:insert>
+                </div>
+
+                <h:form>
+                    <h:panelGrid  style="padding-top: 15px;" columns="2">
+                        <h:inputText  id="auction_name" value="#{auctionBean.findNameKey}" label="#{msgs.Search}" required ="true"
+                                     requiredMessage="Please enter name to search" />                       
+                        <h:commandButton value="#{msgs.Search}" action="#{auctionBean.searchAuction()}"/>
+                        <h:message for="auction_name" styleClass="error"/>
+                    </h:panelGrid>
+                </h:form>
+            </div>
+
+            <div id="content">
+                <ui:insert name="content">
+
+                </ui:insert>
+            </div>
+            <div id="footer">
+                <ui:include src="/sections/footer/footerBody.xhtml"/>           
+            </div>
+        </div>
+        <ui:debug/>
+    </h:body>
+</html>

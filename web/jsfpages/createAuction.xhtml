@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:corejsf="http://corejsf.com" 
+      xmlns:p="http://primefaces.org/ui">
+
+    <head><title>IGNORED</title>
+        <h:outputStylesheet library="css" name="styles.css"/>
+    </head>  
+    <body>
+        <ui:composition template="/templates/masterLayout.xhtml">
+            <ui:define name="content">
+                <div class="seller_registration">
+                    <h:form prependId="false" enctype="multipart/form-data">
+                        <h1> Welcome to the Online Auction System</h1>
+                        <h:panelGrid columns="2">                                                 
+                            Product name:
+                            <h:panelGroup>
+                                <h:inputText id="product_name" size="40" required="true" requiredMessage="#{msgs.pnamerr}" value="#{auctionBean.auction.name}"/>
+                                <br/><h:message for="product_name" styleClass="error" />
+                            </h:panelGroup>
+
+                            Product description:
+                            <h:panelGroup>
+                                <h:inputTextarea style="width: 244px;height: 60px;" id="product_description"  required="true" requiredMessage="#{msgs.pnamerr}" value="#{auctionBean.auction.description}"/>
+                                <br/><h:message for="product_description" styleClass="error" />
+                            </h:panelGroup>
+
+                            Reserved price:
+                            <h:panelGroup>
+                                <h:inputText id="product_reservedPrice" size="40" required="true" requiredMessage="#{msgs.pnamerr}" value="#{auctionBean.auction.reservedPrice}" >
+                                    <f:convertNumber minFractionDigits="2"/>
+                                </h:inputText>
+                                <br/><h:message for="product_reservedPrice" styleClass="error" />
+                            </h:panelGroup>
+
+                            Start date:
+                            <h:panelGroup>
+                                <h:inputText id="product_startDate" size="40" required="true" requiredMessage="#{msgs.pnamerr}" value="#{auctionBean.auction.startDate}" >
+                                    <f:convertDateTime pattern="mm-dd-yyyy"/>
+                                </h:inputText>
+                                <br/>
+                                <h:message for="product_startDate" styleClass="error" />
+                            </h:panelGroup>
+
+                            End date:
+                            <h:panelGroup>
+                                <h:inputText id="product_endDate" size="40" required="true" requiredMessage="#{msgs.pnamerr}" value="#{auctionBean.auction.endDate}" >
+                                    <f:convertDateTime pattern="mm-dd-yyyy"/>
+                                </h:inputText>
+                                <br/><h:message for="product_endDate" styleClass="error" />
+                            </h:panelGroup>
+
+                            Product image:
+                             <h:panelGroup>
+                                 <h:inputText id="product_image" size="40" required="true" requiredMessage="#{msgs.pnamerr}" value="#{auctionBean.auction.itemImage}" >
+                                </h:inputText> (URL)
+                                <br/><h:message for="product_image" styleClass="error" />
+                            </h:panelGroup>
+
+
+                        </h:panelGrid>
+                        <h:commandButton value="Submit" action="#{auctionBean.addAuction()}"/>
+                        <h:commandButton value="Cancel" immediate="true"/>
+                    </h:form>
+                </div>
+            </ui:define>  
+        </ui:composition>
+    </body>
+</html>
